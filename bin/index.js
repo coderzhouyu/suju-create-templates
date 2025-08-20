@@ -79,10 +79,9 @@ async function createProject(projectName, options) {
 
 
     console.log(`\n正在创建项目于 ${green(targetDir)}...`);
-    const TEMPLATE_REPO = "";// gitee 上面存一份
     // 这里使用degit从模板仓库克隆代码
     // 实际使用时，你需要替换为自己的模板仓库
-    const templateRepo = options.repo || TEMPLATE_REPO;
+    const templateRepo = "coderzhouyu/suju-create-templates";
     const templatePath = `${framework.name.toLowerCase()}`; // 模板路径
 
     try {
@@ -92,7 +91,7 @@ async function createProject(projectName, options) {
         // `${templateRepo}#master:${templatePath}`, // main是分支名，根据实际修改
         //     targetDir
         // ]
-        execSync(`npx degit ${templateRepo}#master:${templatePath} ${targetDir} --allow-untrusted`);
+        execSync(`npx giget gh:${templateRepo}/${templatePath}#master ${targetDir}`);
 
         // 修改package.json中的项目名称
         const pkgPath = path.join(targetDir, 'package.json');
@@ -102,15 +101,11 @@ async function createProject(projectName, options) {
             await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2));
         }
 
-        // 安装依赖
-        console.log(`\n正在安装依赖...`);
-        execSync('npm install', { cwd: targetDir, stdio: 'inherit' });
-
         // 成功信息
         console.log(`\n${green('✓')} 项目创建成功!`);
         console.log(`\n进入项目目录并启动开发服务器:`);
         console.log(`  ${cyan('cd')} ${projectName || '.'}`);
-        console.log(`  ${cyan('npm run dev')}`);
+        console.log(`  ${cyan('npm install')}`);
     } catch (error) {
         console.error(`\n${red('✖')} 创建项目失败:`, error.message);
         process.exit(1);
@@ -124,7 +119,6 @@ program
     .version('1.0.0')
     .argument('[project-name]', '项目名称')
     .option('-f, --force', '强制覆盖现有目录')
-    .option('-r, --repo <url>', '指定自定义模板仓库地址') // 新增：允许动态指定仓库
     .action(createProject);
 
 // 解析命令行参数
