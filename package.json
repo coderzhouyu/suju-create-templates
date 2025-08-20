@@ -1,0 +1,27 @@
+{
+    "name": "suju-cli",
+    "version": "1.0.0",
+    "type": "module",
+    "bin": {
+        "create-my-project": "./bin/index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "cli",
+        "project-generator",
+        "vue",
+        "react"
+    ],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "commander": "^14.0.0",
+        "degit": "^2.8.4",
+        "fs-extra": "^11.3.1",
+        "inquirer": "^12.9.3",
+        "kolorist": "^1.8.0"
+    }
+}
