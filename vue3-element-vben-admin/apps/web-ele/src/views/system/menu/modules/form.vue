@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface';
 
 import type { Recordable } from '@vben/types';
 
@@ -24,7 +23,7 @@ import {
   updateMenu,
 } from '#/api/system/menu';
 import { $t } from '#/locales';
-import { componentKeys } from '#/router/routes';
+// import { componentKeys } from '#/router/routes';
 
 import { getMenuTypeOptions } from '../data';
 
@@ -211,7 +210,7 @@ const schema: VbenFormSchema[] = [
       filterOption(input: string, option: { value: string }) {
         return option.value.toLowerCase().includes(input.toLowerCase());
       },
-      options: componentKeys.map((v) => ({ value: v })),
+      // options: componentKeys.map((v) => ({ value: v })),
     },
     dependencies: {
       rules: (values) => {

@@ -15,6 +15,7 @@ import { useAccessStore } from '@vben/stores';
 import { cloneDeep } from '@vben/utils';
 
 import { ElMessage as message } from 'element-plus';
+// @ts-ignore
 import JSONBigInt from 'json-bigint';
 
 import { useAuthStore } from '#/store';

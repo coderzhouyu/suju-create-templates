@@ -29,6 +29,7 @@ const router = createRouter({
   // strict: true,
 });
 
+// 重置路由
 const resetRoutes = () => resetStaticRoutes(router, routes);
 
 // 创建路由守卫

@@ -14,8 +14,9 @@ const logo = computed(() => preferences.logo.source);
   <AuthPageLayout
     :app-name="appName"
     :logo="logo"
-    :page-description="$t('authentication.pageDesc')"
-    :page-title="$t('authentication.pageTitle')"
+    page-description="速聚科技，企业信息化专家。"
+    page-title="速聚通用中后台管理系统"
+    toolbar
   >
     <!-- 自定义工具栏 -->
     <!-- <template #toolbar></template> -->
